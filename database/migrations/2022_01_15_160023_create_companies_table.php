@@ -14,10 +14,13 @@ class CreateCompaniesTable extends Migration
     public function up()
     {
 
+        Schema::dropIfExists('companies');
+
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->integer("parent_id")->nullable(true);
             $table->string("name");
+            $table->string("company_ids");
             $table->timestamps();
         });
     }
