@@ -14,6 +14,8 @@ class CreateStationsTable extends Migration
     public function up()
     {
 
+        Schema::dropIfExists('stations');
+
         Schema::create('stations', function (Blueprint $table) {
             $table->id();
             $table->string("name");
