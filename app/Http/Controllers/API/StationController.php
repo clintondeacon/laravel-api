@@ -15,10 +15,37 @@ class StationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Station::latest()->get();
-        return response()->json([StationResource::collection($data)]);
+        $validation = \Illuminate\Support\Facades\Validator::make($request->all(), [
+            'lat' => 'numeric|between:-90,90|required_with:lng|required_with:radius',
+            'lng' => 'numeric|between:-180,180|required_with:lat|required_with:radius',
+            'radius' => 'numeric|min:1|max:200|required_with:lat|required_with:lng'
+        ]);
+
+        if($validation->fails()){
+
+            return response()->json(["status"=>"error","messages"=>$validation->errors()]);
+
+        } else {
+
+            if($request->lat && $request->lng && $request->radius){
+
+                // We will filter data by radius from the defined GPS point
+                $data = Station::query()->select('stations.*')->selectRaw('(((acos(sin(('.$request->lat.'*pi()/180)) * sin((latitude*pi()/180))+cos(('.$request->lat.'*pi()/180)) * cos((latitude*pi()/180)) * cos((('.$request->lng.'-longitude)*pi()/180))))*180/pi())*60*1.1515*1.609344) as distance')->having('distance','<',$request->radius)->get();
+
+                //$data = Station::query()->selectRaw('(((acos(sin(('.$request->lat.'*pi()/180)) * sin((latitude*pi()/180))+cos(('.$request->lat.'*pi()/180)) * cos((latitude*pi()/180)) * cos((('.$request->lng.'-longitude)*pi()/180))))*180/pi())*60*1.1515*1.609344) as distance')->get();
+                //$data = Station::latest()->get();
+
+            } else {
+
+                $data = Station::latest()->get();
+
+            }
+
+            return StationResource::collection($data);
+
+        }
     }
 
     /**
