@@ -31,7 +31,8 @@ class CompanyController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:255',
-            'desc' => 'required'
+            'parent_id' => 'numeric',
+            'company_ids' => 'string'
         ]);
 
         if($validator->fails()){
@@ -40,7 +41,8 @@ class CompanyController extends Controller
 
         $company = Company::create([
             'name' => $request->name,
-            'desc' => $request->desc
+            'parent_id' => $request->parent_id,
+            'company_ids' => $request->company_ids
         ]);
 
         return response()->json(['Company created successfully.', new CompanyResource($company)]);
@@ -72,7 +74,8 @@ class CompanyController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:255',
-            'desc' => 'required'
+            'parent_id' => 'numeric',
+            'company_ids' => 'string'
         ]);
 
         if($validator->fails()){
@@ -80,7 +83,8 @@ class CompanyController extends Controller
         }
 
         $company->name = $request->name;
-        $company->desc = $request->desc;
+        $company->parent_id = $request->parent_id;
+        $company->company_ids = $request->company_ids;
         $company->save();
 
         return response()->json(['Company updated successfully.', new CompanyResource($company)]);
@@ -98,4 +102,6 @@ class CompanyController extends Controller
 
         return response()->json('Company deleted successfully');
     }
+
+
 }

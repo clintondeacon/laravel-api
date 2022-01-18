@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected $fillable = ['parent_id', 'name'];
+    protected $fillable = ['parent_id', 'name','company_ids'];
 
     public function parent()
     {
