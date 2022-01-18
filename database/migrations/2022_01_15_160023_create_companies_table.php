@@ -20,7 +20,7 @@ class CreateCompaniesTable extends Migration
             $table->id();
             $table->integer("parent_id")->nullable(true);
             $table->string("name");
-            $table->string("company_ids");
+            $table->string("company_ids")->nullable(true);
             $table->timestamps();
         });
     }
