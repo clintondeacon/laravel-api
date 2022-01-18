@@ -1,0 +1,693 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "## Introduction\n\nThis documentation contains all the API endpoints"
+    },
+    "host": "https://laravelapi.smeggers.com",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/",
+    "produces": "application/json",
+    "servers": [
+        {
+            "url": "https://laravelapi.smeggers.com/api"
+        }
+    ],
+    "paths": {
+        "/api/companies": {
+            "get": {
+                "summary": "List all companies",
+                "operationId": "companies",
+                "description": "List all companies.",
+                "tags": [
+                    "Companies"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "companies": {
+                                            "type": "array",
+                                            "description": "Company",
+                                            "items": {
+                                                "$ref": "#/components/responses/CompanyObject"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create company",
+                "operationId": "companies",
+                "description": "Update a company",
+                "tags": [
+                    "Companies"
+                ],
+                "requestBody": {
+                    "description": "The parameters for creating a company",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "The name of the company"
+                                    },
+                                    "parent_id": {
+                                        "type": "string",
+                                        "description": "The ID for the parent company"
+                                    },
+                                    "company_ids": {
+                                        "type": "string",
+                                        "description": "A comma delimited list of companies included in this company"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":    {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "companies": {
+                                            "type": "array",
+                                            "description": "Company",
+                                            "items": {
+                                                "$ref": "#/components/responses/CompanyObject"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/companies/{id}": {
+            "get": {
+                "summary": "List company",
+                "operationId": "companies",
+                "description": "List company.",
+                "tags": [
+                    "Companies"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "companies": {
+                                            "type": "array",
+                                            "description": "Company",
+                                            "items": {
+                                                "$ref": "#/components/responses/CompanyObject"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Update company",
+                "operationId": "companies",
+                "description": "Update a company",
+                "tags": [
+                    "Companies"
+                ],
+                "requestBody": {
+                    "description": "The parameters for updating a company",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "The name of the company"
+                                    },
+                                    "parent_id": {
+                                        "type": "string",
+                                        "description": "The ID for the parent company"
+                                    },
+                                    "company_ids": {
+                                        "type": "string",
+                                        "description": "A comma delimited list of companies included in this company"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "companies": {
+                                            "type": "object",
+                                            "description": "The delete was successful",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "string",
+                                                    "description": "the status"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete":{
+                "summary": "Delete company",
+                "operationId": "companies",
+                "description": "Delete company.",
+                "tags": [
+                    "Companies"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "companies": {
+                                            "type": "object",
+                                            "description": "The delete was successful",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "string",
+                                                    "description": "the status"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/stations": {
+            "get": {
+                "summary": "List all stations",
+                "operationId": "stations",
+                "description": "List all stations.",
+                "tags": [
+                    "Stations"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "stations": {
+                                            "type": "array",
+                                            "description": "Station",
+                                            "items": {
+                                                "$ref": "#/components/responses/StationObject"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create station",
+                "operationId": "stations",
+                "description": "Update a station",
+                "tags": [
+                    "Stations"
+                ],
+                "requestBody": {
+                    "description": "The parameters for creating a station",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "The name of the station"
+                                    },
+                                    "latitude": {
+                                        "type": "string",
+                                        "description": "The latitude of the station"
+                                    },
+                                    "longitude": {
+                                        "type": "string",
+                                        "description": "The longitude of the station"
+                                    },
+                                    "company_id": {
+                                        "type": "string",
+                                        "description": "The station's company ID"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "description": "The address of the station"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":    {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "stations": {
+                                            "type": "array",
+                                            "description": "Station",
+                                            "items": {
+                                                "$ref": "#/components/responses/StationObject"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/stations/{id}": {
+            "get": {
+                "summary": "List station",
+                "operationId": "stations",
+                "description": "List station.",
+                "tags": [
+                    "Stations"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "stations": {
+                                            "type": "array",
+                                            "description": "Station",
+                                            "items": {
+                                                "$ref": "#/components/responses/StationObject"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Update station",
+                "operationId": "stations",
+                "description": "Update a station",
+                "tags": [
+                    "Stations"
+                ],
+                "requestBody": {
+                    "description": "The parameters for updating a station",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "The name of the station"
+                                    },
+                                    "latitude": {
+                                        "type": "string",
+                                        "description": "The latitude of the station"
+                                    },
+                                    "longitude": {
+                                        "type": "string",
+                                        "description": "The longitude of the station"
+                                    },
+                                    "company_id": {
+                                        "type": "string",
+                                        "description": "The station's company ID"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "description": "The address of the station"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "stations": {
+                                            "type": "object",
+                                            "description": "The delete was successful",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "string",
+                                                    "description": "the status"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete":{
+                "summary": "Delete station",
+                "operationId": "stations",
+                "description": "Delete station.",
+                "tags": [
+                    "Stations"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "stations": {
+                                            "type": "object",
+                                            "description": "The delete was successful",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "string",
+                                                    "description": "the status"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "queryparameters": {
+            "latitude": {
+                "name": "latitude",
+                "description": "The latitude figure for the radius search, also requires longitude and radius parameters",
+                "in": "query",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "longitude": {
+                "name": "longitude",
+                "description": "The longitude figure for the radius search, also requires latitude and radius parameters",
+                "in": "query",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "radius": {
+                "name": "radius",
+                "description": "The radius (in KM) figure for the radius search, also requires latitude and longitude parameters",
+                "in": "query",
+                "required": false,
+                "schema": {
+                    "type": "numeric"
+                }
+            }
+        },
+        "requests": {
+            "bookingItemObject": {
+                "type": "object",
+                "required": [
+                    "startdate",
+                    "eventid",
+                    "quantity",
+                    "serviceid",
+                    "businessid",
+                    "itempriceid",
+                    "pricingcategoryid"
+                ],
+                "description": "All the details for the booking item",
+                "properties": {
+                    "startdate": {
+                        "type": "string",
+                        "description": "The start date of the activity, for backwards compatibility, it can also be set as 'at'"
+                    },
+                    "enddate": {
+                        "type": "string",
+                        "description": "The end date of the activity, this is only required for accommodation and rental service types"
+                    },
+                    "eventid": {
+                        "type": "string",
+                        "description": "The event ID of the activity, for backwards compatibility, it can also be set as 'availabilityId'"
+                    },
+                    "quantity": {
+                        "type": "string",
+                        "description": "The quantity to be booked of the activity, for backwards compatibility, it can also be set as 'qty'"
+                    },
+                    "serviceid": {
+                        "type": "string",
+                        "description": "The service ID of the activity, for backwards compatibility, it can also be set as 'productId'"
+                    },
+                    "businessid": {
+                        "type": "string",
+                        "description": "The business ID of the activity, for backwards compatibility, it can also be set as 'supplierId'"
+                    },
+                    "itempriceid": {
+                        "type": "string",
+                        "description": "The pricing ID of the activity, for backwards compatibility, it can also be set as 'rateId'"
+                    },
+                    "pricingcategoryid": {
+                        "type": "string",
+                        "description": "The pricing category ID of the activity, for backwards compatibility, it can also be set as 'priceId'"
+                    }
+                }
+            },
+            "customerObject": {
+                "type": "object",
+                "required": [
+                    "email",
+                    "first_name",
+                    "last_name"
+                ],
+                "description": "Contains basic details for the customer",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email address of the customer"
+                    },
+                    "first_name": {
+                        "type": "string",
+                        "description": "The first name of the customer, for backwards compatibility, it can also be set as 'firstName'"
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "description": "The last name of the customer, for backwards compatibility, it can also be set as 'lastName'"
+                    },
+                    "companyName": {
+                        "type": "string",
+                        "description": "The company name of the customer"
+                    },
+                    "companyId": {
+                        "type": "string",
+                        "description": "The company ID of the customer"
+                    },
+                    "address1": {
+                        "type": "string",
+                        "description": "The first line of the address for the customer"
+                    },
+                    "address2": {
+                        "type": "string",
+                        "description": "The second line of the address for the customer"
+                    },
+                    "city": {
+                        "type": "string",
+                        "description": "The city of the address for the customer"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The state/region of the address for the customer"
+                    },
+                    "country": {
+                        "type": "string",
+                        "description": "TThe country of the address for the customer"
+                    },
+                    "postcode": {
+                        "type": "string",
+                        "description": "The postcodee/zip of the address for the customer"
+                    }
+                }
+            },
+            "Reservation": {
+                "title": "The reservation object",
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "type": "string",
+                        "description": "njnkcfnvnif"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "CompanyObject": {
+                "type": "object",
+                "description": "The company object contains basic details",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of this company"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the company"
+                    },
+                    "children": {
+                        "type": "array",
+                        "description": "The breakdown of the tax of this booking item extra",
+                        "items": {
+                            "$ref": "#/components/responses/ChildCompanyObject"
+                        }
+                    },
+                    "stations": {
+                        "type": "array",
+                        "description": "The stations attached to this company",
+                        "items": {
+                            "$ref": "#/components/responses/StationObject"
+                        }
+                    }
+                }
+            },
+            "StationObject": {
+                "type": "object",
+                "description": "The station object contains basic details",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of this company"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the company"
+                    },
+                    "latitude": {
+                        "type": "string",
+                        "description": "The latitude of the station"
+                    },
+                    "longitude": {
+                        "type": "string",
+                        "description": "The longitude of the station"
+                    },
+                    "company_id": {
+                        "type": "string",
+                        "description": "The company id of the station"
+                    },
+                    "address": {
+                        "type": "string",
+                        "description": "The address of the station"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "description": "The date the station was created"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "description": "The date the station was last updated"
+                    }
+                }
+            },
+            "ChildCompanyObject": {
+                "type": "object",
+                "description": "The company object contains basic details of the child company",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of this company"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the company"
+                    }
+                }
+            }
+        },
+        "schemas": {
+            "errorResponse": {
+                "description": "An error is returned",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "errorcode": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
