@@ -11,3 +11,10 @@ An example showing Laravel's API capablities
 `./vendor/bin/sail artisan db:seed --class=CompanyTableSeeder`
 
 `./vendor/bin/sail artisan db:seed --class=StationsTableSeeder`
+
+
+
+
+## Example
+
+[https://laravelapi.smeggers.com](https://laravelapi.smeggers.com).
