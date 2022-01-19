@@ -4,6 +4,8 @@ An example showing Laravel's API capablities
 
 ## Installation / Usage
 
+`composer update`
+
 `./vendor/bin/sail artisan up -d`
 
 `./vendor/bin/sail artisan migrate`
@@ -11,8 +13,6 @@ An example showing Laravel's API capablities
 `./vendor/bin/sail artisan db:seed --class=CompanyTableSeeder`
 
 `./vendor/bin/sail artisan db:seed --class=StationsTableSeeder`
-
-
 
 
 ## Example
